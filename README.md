@@ -8,7 +8,8 @@ Visual Studio 2019
 .NET Core 3.1 
 
 ## Dependencies
-xUnit.NET
-Moq
-Newtonsoft.Json
+
+xUnit.NET <br/>
+Moq <br/>
+Newtonsoft.Json <br/>
 
