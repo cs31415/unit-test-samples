@@ -93,5 +93,31 @@ namespace UnitTestSamples.Tests
             // Assert
             Assert.True(string.IsNullOrEmpty(activity));
         }
+
+        [Fact]
+        public void GetActivity__CallsActivityAPI()
+        {
+            // Arrange
+
+            // This is the HTTP response message class we want the API to
+            // return
+            var httpResponseMessage = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+
+            // Here, we setup a mock ApiClient instance and program it to 
+            // return our canned HTTP response above.
+            var apiClient = Mock.Of<IApiClient>();
+            Mock.Get(apiClient)
+                .Setup(m => m.GetAsync(It.IsAny<string>()))
+                .ReturnsAsync(httpResponseMessage);
+
+            // We instantiate the SUT and pass in the mock dependency
+            var activityGenerator = new ActivityGenerator(apiClient);
+
+            // Act
+            var activity = activityGenerator.GetActivity();
+
+            // Assert
+            Assert.True(string.IsNullOrEmpty(activity));
+        }
     }
 }
