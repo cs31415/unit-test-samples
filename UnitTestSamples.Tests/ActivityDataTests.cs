@@ -36,7 +36,6 @@ namespace UnitTestSamples.Tests
             var activityData = new ActivityData(sqlClient, config);
 
             // Act
-
             activityData.Save("Create a compost pile");
 
             // Assert
